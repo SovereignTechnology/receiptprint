@@ -1,0 +1,15 @@
+# Build output
+build/
+*.apk
+*.apks
+*.idsig
+
+# Signing material (never commit)
+debug.keystore
+*.keystore
+*.jks
+
+# Local toolchain (JDK + Android SDK), downloaded by build.sh users
+toolchain/
+.gradle/
+local.properties
