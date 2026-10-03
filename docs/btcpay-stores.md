@@ -5,7 +5,7 @@ terminal and shared invoice links use **two stores**:
 
 | Setting | **POS store** (terminal) | **Links store** (customer links) |
 |---|---|---|
-| Store name | `Sovereign Technology S.A.S. de C.V.` | `SovTech Links` |
+| Store name | `SovTech POS` | `SovTech` |
 | Store id | `2sg7cNkRW52iT624jHeVdN2V73sEfMnqvt15vu3yzbik` | `LmEWuY3RUaLB9F2BfdDqsNGTFipisPU3BhULEcF8ehmHgt5R1ZuS` |
 | CASH (MarkPaid) | **enabled** | disabled |
 | "Show 'Pay in wallet' button" | **off** | **on** |
@@ -36,10 +36,10 @@ Both stores have both enabled, so amounts read e.g. `12 sats` instead of
 The Links store was created as a shell with the toggles above. It still needs a
 **wallet / Lightning node connected** (a UI action with your keys):
 
-1. BTCPay → **SovTech Links** → connect the Lightning node (and/or an on-chain
+1. BTCPay → **SovTech** → connect the Lightning node (and/or an on-chain
    wallet) the same way the POS store is connected.
-2. Create a test invoice from the Links store and confirm the checkout shows the
-   **"Pay in wallet"** button, **sats**, and **no CASH**.
+2. Create a test invoice from the **SovTech** store and confirm the checkout shows
+   the **"Pay in wallet"** button, **sats**, and **no CASH**.
 3. From the terminal (POS store) confirm the checkout shows **CASH**, **sats**,
    and **no "Pay in wallet"** button.
 
