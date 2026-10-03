@@ -31,17 +31,21 @@ created from the **Links store**.
 Both stores have both enabled, so amounts read e.g. `12 sats` instead of
 `0.00000012 BTC`.
 
-## Remaining setup for the Links store
+## Links store wallet
 
-The Links store was created as a shell with the toggles above. It still needs a
-**wallet / Lightning node connected** (a UI action with your keys):
+The **SovTech** (links) store was given the **same wallet as the POS store** by
+copying `BTC-CHAIN` (xpub), `BTC-LN` (Lightning node connection) and `BTC-LNURL`
+from the POS store's `DerivationStrategies` — **excluding `CASH`**, so the links
+checkout stays cash-free. Methods on **SovTech**: `BTC-LN, BTC-CHAIN, BTC-LNURL`.
 
-1. BTCPay → **SovTech** → connect the Lightning node (and/or an on-chain
-   wallet) the same way the POS store is connected.
-2. Create a test invoice from the **SovTech** store and confirm the checkout shows
-   the **"Pay in wallet"** button, **sats**, and **no CASH**.
-3. From the terminal (POS store) confirm the checkout shows **CASH**, **sats**,
-   and **no "Pay in wallet"** button.
+> Caveat: both stores now derive from the **same xpub** (address reuse across the
+> POS and link stores). That is fine for a single merchant, but it is why the two
+> stores' on-chain addresses are not disjoint.
+
+## Verification checklist
+
+- **POS store** (terminal): checkout shows **CASH**, **sats**, no **"Pay in wallet"** — verified on the terminal.
+- **SovTech** (links): an invoice link shows **"Pay in wallet"**, **sats**, and **no CASH**.
 
 ## Plugins and API keys
 
