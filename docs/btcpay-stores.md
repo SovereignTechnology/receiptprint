@@ -43,6 +43,18 @@ The Links store was created as a shell with the toggles above. It still needs a
 3. From the terminal (POS store) confirm the checkout shows **CASH**, **sats**,
    and **no "Pay in wallet"** button.
 
+## Plugins and API keys
+
+- **Plugins are installed once, server-wide**, and shared by both stores:
+  `MarkPaidCheckout`, `Blink`, `NIP05`, `BTCMap`, `Monero`. A plugin's feature is
+  **enabled per store** — MarkPaid CASH is enabled on **SovTech POS** only; the
+  **SovTech** (links) store has it disabled, so CASH never appears on link
+  checkouts.
+- **No API keys exist** (0 in the DB), and the terminal needs none: the PoS uses
+  the browser session and the cash "Mark Settled" endpoint is anonymous. API
+  keys in BTCPay are scoped per store/user and would only be created
+  deliberately (e.g. if the helper app were to create invoices via the API).
+
 ## Applied via (record)
 
 The POS store's `StoreBlob` (wallet off, sats on, unify on) and the Links store
