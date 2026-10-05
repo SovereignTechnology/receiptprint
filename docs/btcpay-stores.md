@@ -10,7 +10,7 @@ terminal and shared invoice links use **two stores**:
 | CASH (MarkPaid) | **enabled** | disabled |
 | "Show 'Pay in wallet' button" | **off** | **on** |
 | Display Lightning amounts in Satoshis | **on** | **on** |
-| Unify on-chain + lightning QR | **on** (sats everywhere) | **on** |
+| Unify on-chain + lightning QR | **off** (separate Lightning button) | **off** |
 
 The terminal's PoS app points at the **POS store**; customer invoice links are
 created from the **Links store**.
@@ -26,10 +26,14 @@ created from the **Links store**.
 
 ## Sats display
 
-`LightningAmountInSatoshi` shows Lightning amounts in sats; with
-`OnChainWithLnInvoiceFallback` (unify) enabled, on-chain amounts show sats too.
-Both stores have both enabled, so amounts read e.g. `12 sats` instead of
-`0.00000012 BTC`.
+`LightningAmountInSatoshi` shows **Lightning** amounts in sats. With unify
+(`OnChainWithLnInvoiceFallback`) also enabled, on-chain amounts show sats too —
+but unify folds Lightning into the Bitcoin BIP21 QR and **hides the Lightning
+button** (checkout shows only Bitcoin + CASH). Since 2026-10-04 unify is
+**off** on both stores, so the checkout shows three buttons — **Bitcoin,
+Lightning, CASH** — and **on-chain amounts show BTC** (e.g. `0.00000121 BTC`)
+while Lightning keeps sats (`12 sats`). That trade-off is forced by BTCPay:
+sats on on-chain require unify, which costs the separate Lightning button.
 
 ## Links store wallet
 
@@ -44,8 +48,8 @@ checkout stays cash-free. Methods on **SovTech**: `BTC-LN, BTC-CHAIN, BTC-LNURL`
 
 ## Verification checklist
 
-- **POS store** (terminal): checkout shows **CASH**, **sats**, no **"Pay in wallet"** — verified on the terminal.
-- **SovTech** (links): an invoice link shows **"Pay in wallet"**, **sats**, and **no CASH**.
+- **POS store** (terminal): checkout shows **Bitcoin + Lightning + CASH** (Lightning in sats, on-chain in BTC), no **"Pay in wallet"** — verified on the terminal.
+- **SovTech** (links): an invoice link shows **"Pay in wallet"**, **sats on Lightning**, and **no CASH**.
 
 ## Plugins and API keys
 
@@ -65,3 +69,7 @@ The POS store's `StoreBlob` (wallet off, sats on, unify on) and the Links store
 row were applied directly in the BTCPay Postgres DB on advin-vps
 (`btcpayservermainnet`), then `kata-btcpayserver.service` restarted. Backup of
 the pre-change blob: `advin-vps:/root/btcpay-store-backup-20261002/`.
+
+2026-10-04: `onChainWithLnInvoiceFallback` set to `false` on **both** stores
+(same stop → UPDATE → start procedure) to restore the separate Lightning
+button. Pre-change blob backup: `advin-vps:/root/btcpay-store-backup-20261004/`.
