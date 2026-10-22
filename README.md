@@ -1,5 +1,7 @@
 # sovtech-receiptprint
 
+> **Source of truth:** [`nostr://npub1s0vtechh66tx7vrwdud8zfyheu9zca7swwfrzd4qu2a4f93mxs6qvn9adx/relay.ngit.dev/receiptprint`](https://gitworkshop.dev/npub1s0vtechh66tx7vrwdud8zfyheu9zca7swwfrzd4qu2a4f93mxs6qvn9adx/relay.ngit.dev/receiptprint) — issues and pull requests live there. This GitHub repository is a mirror; push to the Nostr remote, not here.
+
 A tiny Android helper that prints BTCPay Server receipts to the **built-in
 thermal printer** of a NYX / Miray POS terminal (Unisoc `TPM4G_E9863`, Android 12).
 
