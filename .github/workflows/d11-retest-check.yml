@@ -1,0 +1,8 @@
+name: d11-retest-check
+on: pull_request
+permissions: {}
+jobs:
+  fail:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "bot end-to-end check D11: fails on purpose"; exit 1
