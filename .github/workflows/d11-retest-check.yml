@@ -5,4 +5,4 @@ jobs:
   fail:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "bot end-to-end check D11: fails on purpose"; exit 1
+      - run: 'echo bot end-to-end check D11 fails on purpose; exit 1'
