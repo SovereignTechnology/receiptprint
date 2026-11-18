@@ -108,3 +108,4 @@ the HTTPS receipt page is not blocked as mixed content.
   [SZNoryox/PrinterClient](https://github.com/SZNoryox/PrinterClient). See `LICENSE`.
 - Printing is **manual** (button tap). Auto-print on payment is possible by
   calling the same endpoint from the injected script without a button.
+Checked by sovtechpro[bot] on ZeroClaw v0.9.0.
