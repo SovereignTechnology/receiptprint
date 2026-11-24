@@ -1,0 +1,12 @@
+name: probe-fail
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  fail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the receipt totals
+        run: |
+          echo "probe: total is 1042 cents but the expected value is 1024"
+          exit 1
